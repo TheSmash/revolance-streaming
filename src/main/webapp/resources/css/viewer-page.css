@@ -1,0 +1,361 @@
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * ui-monitoring-server
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Copyright (C) 2012 - 2014 RevoLance
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the 
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public 
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/gpl-3.0.html>.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+.page
+{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 5px;
+}
+
+.added
+{
+    border: 1px solid #2F96B4;
+    -moz-box-shadow: 0px 0px 10px #2F96B4 !important;
+    -webkit-box-shadow: 0px 0px 10px #2F96B4 !important;
+    box-shadow: 0px 0px 10px #2F96B4 !important;
+}
+
+.base
+{
+    border: 1px solid #5BB75B;
+    -moz-box-shadow: 0px 0px 10px #5BB75B !important;
+    -webkit-box-shadow: 0px 0px 10px #5BB75B !important;
+    box-shadow: 0px 0px 10px #5BB75B !important;
+}
+
+.removed, .error
+{
+    border: 1px solid #BD362F;
+    -moz-box-shadow: 0px 0px 10px #BD362F !important;
+    -webkit-box-shadow: 0px 0px 10px #BD362F !important;
+    box-shadow: 0px 0px 10px #BD362F !important;
+}
+
+.warn
+{
+    border: 1px solid #F89406;
+    -moz-box-shadow: 0px 0px 10px #F89406 !important;
+    -webkit-box-shadow: 0px 0px 10px #F89406 !important;
+    box-shadow: 0px 0px 10px #F89406 !important;
+}
+
+.undef
+{
+    background-color: #DEDEDE !important;
+    background-image: url("../img/missing-icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.new-page, .ref-page
+{
+    float: left;
+}
+
+.new-page .data-container, .ref-page .data-container
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-decorator
+{
+    border-radius: 15px;
+    padding: 10px;
+    margin: 15px 10px;
+    background-color: #f5f5f5;
+    -moz-box-shadow: 0px 0px 10px #888;
+    -webkit-box-shadow: 0px 0px 10px #888;
+    box-shadow: 0px 0px 10px #888;
+}
+
+.page-element
+{
+    // margin: 1px;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+}
+
+.page-element:hover
+{
+    cursor: move;
+}
+
+.page-element:hover:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(100,180,255,.5);
+}
+
+.new .page-element[data-diff-type=ADDED], .legend .icon[data-diff-type=ADDED]
+{
+    border: orange 1px dashed;
+}
+
+.ref .page-element[data-diff-type=DELETED], .legend .icon[data-diff-type=DELETED]
+{
+    border: #dd362f 1px dashed;
+
+}
+
+.new .page-element[data-diff-type=CHANGED], .legend .icon[data-diff-type=CHANGED]
+{
+    border: #227CBD 1px dashed;
+}
+
+.legend .icon
+{
+    width: 50px;
+    height: 10px;
+    float: left;
+}
+
+.legend
+{
+    float: left;
+}
+
+.legend div
+{
+    float: left;
+    margin: 5px 5px;
+}
+
+#differency-count
+{
+    margin: 5px 5px;
+}
+
+.comparison
+{
+    width: 300px;
+}
+
+.comparisons
+{
+    position: absolute;
+    top:0px;
+    right: 0px;
+    height: 14px;
+}
+
+.comparisons div
+{
+    float: right;
+    width: 12px;
+    height: 14px;
+    background-position: top center;
+}
+
+.comparisons div.pos-comparison
+{
+    background-size: 14px 14px;
+    background-repeat: no-repeat;
+    background-image: url("../img/pos.png");
+}
+
+.comparisons div.look-comparison
+{
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-image: url("../img/look.png");
+}
+
+.comparisons div.impl-comparison
+{
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-image: url("../img/type.png");
+}
+
+.comparisons div.value-comparison
+{
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-image: url("../img/value.png");
+}
+
+.comparisons div.target-comparison
+{
+    background-size: 14px 14px;
+    background-repeat: no-repeat;
+    background-image: url("../img/target.png");
+}
+
+.hover
+{
+}
+
+.hover:after
+{
+    content: ' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(100,180,255,.5);
+}
+
+fieldset
+{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.comments
+{
+    vertical-align: middle;
+}
+
+.tooltip-form
+{
+    padding-top: 8px;
+}
+
+form.tooltip-form .form-actions
+{
+
+}
+
+.tooltip-form input[type=button], .tooltip-form button[type=submit]
+{
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+form .page-diff-form
+{
+    margin-top: 20px;
+}
+
+.element-content-form
+{
+    display: none;
+}
+
+.next
+{
+    background-image: url('../img/next.png');
+}
+
+.revert
+{
+    background-image: url('../img/revert.png');
+}
+
+.commit
+{
+    background-image: url('../img/commit.png');
+}
+
+.previous
+{
+    background-image: url('../img/previous.png');
+}
+
+.confirm-all
+{
+    background-image: url('../img/confirm-all.png');
+}
+
+.commit, .revert, .next, .previous, .confirm-all
+{
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: center center;
+
+    border: 1px solid #909090;
+    cursor:pointer;
+    float: left;
+}
+
+.disabled
+{
+    opacity:0.2;
+    filter:alpha(opacity=20); /* For IE8 and earlier */
+}
+
+
+.toolbar a
+{
+    float: left;
+}
+
+#filter
+{
+    vertical-align: baseline;
+}
+
+.changes
+{
+    float: left;
+    clear: both;
+    width: 100%;
+}
+
+.cloud-tag
+{
+    padding: 5px;
+    background-color: #EFEFF0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5
+}
+
+.data-container
+{
+    margin-bottom: 20px;
+}
+
+.data-container-title
+{
+    font-size: 22px;
+    color: gray;
+}
+
+.data em
+{
+    font-size: 16px;
+}
+
+.data
+{
+    font-size: 12px;
+    padding-left: 8px;
+}
+
+.toolbar
+{
+    height: 45px;
+    float: right;
+}
+
+
